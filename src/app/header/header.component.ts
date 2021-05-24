@@ -10,6 +10,7 @@ import { AuthService } from '../auth/auth.service';
 })
 export class HeaderComponent implements OnInit,OnDestroy{
   // @Output() featureSelected = new EventEmitter<string>();
+  collapsed = true;
   private userSub : Subscription;
   isAuthenticated = false;
   constructor(private dataStorageService:DataStorageService,
@@ -24,6 +25,9 @@ export class HeaderComponent implements OnInit,OnDestroy{
   // onSelect(feature:string){
   //   this.featureSelected.emit(feature)
   // }
+  onLogout(){
+    this.authService.logout();
+  }
 
   onSaveData(){
     this.dataStorageService.storeRecipes();
